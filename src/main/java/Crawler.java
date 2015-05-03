@@ -1,3 +1,4 @@
+import com.sun.org.apache.xpath.internal.SourceTree;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -24,7 +25,7 @@ public class Crawler {
         }
     }
 
-    public void getDataFromDoc(){
+    public ArrayList getDataFromDoc(){
 
         Elements resultAlphaIds = doc.select("table[width=750][cellspacing=1] tbody tr td:first-child");
         Elements resultAlphaParentIds = doc.select("table[width=750][cellspacing=1] tbody tr td:nth-child(2)");
@@ -42,9 +43,11 @@ public class Crawler {
                 String alpha_parent_id = resultAlphaParentId.text();
                 String reference_name = resultReferenceName.text();
                 
+                System.out.println(alpha_id);
                 Languages.add(new AlphaObject(alpha_id,alpha_parent_id,reference_name));
             }
         }
+        return Languages;
     }
 
 }
