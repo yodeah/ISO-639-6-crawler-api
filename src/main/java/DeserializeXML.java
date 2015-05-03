@@ -1,3 +1,5 @@
+import com.thoughtworks.xstream.XStream;
+
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
@@ -12,6 +14,7 @@ public class DeserializeXML {
 
     private String file_access;
     private List<String> xml;
+    ArrayList<AlphaObject> AllLanguages = new ArrayList<AlphaObject>();
 
     private String getFileAccess() {
         return file_access;
@@ -22,7 +25,6 @@ public class DeserializeXML {
     }
 
     public void Execute(){
-   // public ArrayList Execute(){
         try{
             this.xml = Files.readAllLines(Paths.get("/home/andras/IdeaProjects/crwler/xmls/tesztfile.txt"), Charset.defaultCharset());
             System.out.println(this.xml.size());
@@ -30,7 +32,23 @@ public class DeserializeXML {
             System.err.println("Caught IOException: " + e.getMessage());
         }
 
-        System.out.println("l");
+        XStream xstream = new XStream();
+        int line = 0;
+        String objectXML = "";
+
+        for (String objectXMLline : xml){
+            objectXML += objectXMLline;
+           if(line%5==0 && line!=0) {
+               AlphaObject lol = (AlphaObject) xstream.fromXML(objectXML);
+               AllLanguages.add(lol);
+               System.out.println(objectXML);
+               System.out.println("");
+               objectXML = "";
+           }
+            line++;
+        }
+
+        System.out.printf("LOL");
     }
 
 

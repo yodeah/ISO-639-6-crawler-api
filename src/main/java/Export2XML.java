@@ -25,7 +25,7 @@ public class Export2XML {
         String xml = "";
 
         for (int x = 0; x < all_languages_count; x++) {
-            xml += xstream.toXML(all_languages.get(x));
+            xml = xml + "\n" + xstream.toXML(all_languages.get(x));
         }
 
         return xml;
