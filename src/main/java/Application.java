@@ -8,6 +8,7 @@ public class Application {
     public static void main(String[] args) {
         DataOutputTest();
         //DownloadElementsIntoAnXML();
+        runBDDTests();
     }
 
     public static void DownloadElementsIntoAnXML(){
@@ -37,6 +38,10 @@ public class Application {
         deserializer.setFileAccess("xmls/tesztfile.txt");
         //ArrayList<AlphaObject> = deserializer.Execute();
         deserializer.Execute();
+    }
+    
+    public static void runBDDTests(){
+        // Code to run BDD tests using Cucumber library
     }
 
 }
