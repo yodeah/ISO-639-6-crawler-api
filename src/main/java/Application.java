@@ -40,8 +40,9 @@ public class Application {
         deserializer.Execute();
     }
     
-    public static void runBDDTests(){
-        // Code to run BDD tests using Cucumber library
+    @RunWith(Cucumber.class)
+    @CucumberOptions(features = "src/test/resources")
+    public class RunCucumberTest {
     }
 
 }
